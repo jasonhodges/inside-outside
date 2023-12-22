@@ -24,22 +24,22 @@ const dateHelper = (dateString: string) => {
 
   return formattedHour;
 }
-const customTooltip = ({payload, active}) => {
-  if (!active || !payload) return null;
+const customTooltip = (x: any) => {
+  if (!x.active || !x.payload) return null;
   return (
     <div className="w-56 rounded-tremor-default text-tremor-default bg-dark-tremor-background-emphasis p-1 shadow-tremor-dropdown border border-tremor-border">
       <div className="flex justify-between items-center">
         <Image
-          src={`https://openweathermap.org/img/wn/${payload[0].payload.condition_icon}@2x.png`}
+          src={`https://openweathermap.org/img/wn/${(x.payload)[0].payload.condition_icon}@2x.png`}
           width={30}
           height={30}
           alt="Icon of weather condition"
           className="w-10 flex-none"
         />
-        <p className="flex">{payload[0].payload.condition_description}</p>
-        <p className="flex-none w-10">{dateHelper(payload[0].payload.published_at)}</p>
+        <p className="flex">{(x.payload)[0].payload.condition_description}</p>
+        <p className="flex-none w-10">{dateHelper((x.payload)[0].payload.published_at)}</p>
       </div>
-      {payload.map((category, idx) => (
+      {x.payload.map((category: any, idx: any) => (
         <div key={idx} className="flex flex-1 space-x-2.5">
           <div className={`w-1 flex bg-${category.color}-500 rounded`} />
           <div className="flex space-x-4">
@@ -52,7 +52,7 @@ const customTooltip = ({payload, active}) => {
         <div className={`w-1 flex bg-red-500 rounded`} />
         <div className="flex space-x-4">
           <p className="w-20 flex-none text-tremor-content">difference</p>
-          <p className="font-medium text-tremor-content-emphasis">{payload[0].payload.temp_difference.toFixed(2)}°F</p>
+          <p className="font-medium text-tremor-content-emphasis">{(x.payload)[0].payload.temp_difference.toFixed(2)}°F</p>
         </div>
       </div>
     </div>
@@ -80,7 +80,7 @@ export default function HomePage({weatherData}: any) {
         <TabPanels>
           <TabPanel>
             <Grid numItemsMd={2} numItemsLg={3} className="mt-6 gap-6">
-              {weatherData.map((d) => (
+              {weatherData.map((d: any) => (
                 <Card key={d._id}>
                     <Title>{format(parseISO(d._id), "EEEE MMM. d, yyyy")}</Title>
                     <AreaChart
