@@ -66,7 +66,6 @@ const valueFormatter = function(number: { toString: () => string; }) {
 
 
 export default function HomePage({weatherData}: any) {
-  console.log(weatherData)
   return (
     <main>
       <Title>Dashboard</Title>
