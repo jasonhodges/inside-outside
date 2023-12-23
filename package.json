@@ -8,6 +8,7 @@
   "dependencies": {
     "@observablehq/plot": "^0.6.12",
     "@tremor/react": "^3.12.1",
+    "@vercel/speed-insights": "^1.0.2",
     "d3": "^7.8.5",
     "date-fns": "^2.30.0",
     "date-fns-tz": "^2.0.0",
