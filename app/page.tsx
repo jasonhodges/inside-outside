@@ -1,6 +1,8 @@
 // Import the Client Component
 import HomePage from "./home-page";
 import clientPromise from "../lib/mongodb";
+// Opt out of caching for all data requests in the route segment
+export const dynamic = 'force-dynamic'
 
 async function getWeatherData() {
   const client = await clientPromise;
